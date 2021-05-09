@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # home_flix
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# HomeFlixUI
+The user interface for the HomeFlix application
+>>>>>>> 4545b59a8ea0b7dead1fca8166cb7e4bb9744c2c
