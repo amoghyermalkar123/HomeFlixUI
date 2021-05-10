@@ -1,37 +1,76 @@
-import React, {Component} from "react";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import React, { Component } from "react";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 export default class Login extends Component {
-    render() {
-        return (
-            <form>
+  constructor(props) {
+    super(props);
 
-                <h3>Log in</h3>
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Enter email"/>
-                </div>
+  render() {
+    var handleEmail = (event) => {
+      this.setState({ email: event.target.value });
+    };
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password"/>
-                </div>
+    var handlePassword = (event) => {
+      this.setState({ password: event.target.value });
+    };
 
-                <div className="form-group">
-                    <div className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input" id="customCheck1"/>
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                    </div>
-                </div>
+    var submitLoginDetails = () => {
+      console.log(this.state.email);
+      console.log(this.state.password);
+    };
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
-                <p className="forgot-password text-right">
-                    Forgot
-                    <a href="#">password?</a>
-                </p>
-            </form>
-        );
-    }
+    return (
+      <form>
+        <h3>Log in</h3>
+
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+            onInput={(e) => handleEmail(e)}
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+            onInput={(e) => handlePassword(e)}
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <div className="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              className="custom-control-input"
+              id="customCheck1"
+            />
+          </div>
+        </div>
+        <br />
+        <button
+          type="submit"
+          className="btn btn-dark btn-lg btn-block"
+          onClick={submitLoginDetails}
+        >
+          Sign in
+        </button>
+        <p className="forgot-password text-right">
+          Forgot
+          <a href="#">password?</a>
+        </p>
+      </form>
+    );
+  }
 }

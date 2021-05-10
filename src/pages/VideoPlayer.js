@@ -1,4 +1,5 @@
 import React from "react";
+import "./VideoPlayer.css";
 import ReactHlsPlayer from 'react-hls-player';
 
 function VideoPlayer() {
@@ -10,7 +11,8 @@ function VideoPlayer() {
                 autoPlay={false}
                 controls={true}
                 width="100%"
-                height="auto"/>
+                height="auto"
+                id="videoPlayer"/>
         </div>
     );
 }
