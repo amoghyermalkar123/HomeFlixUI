@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import VideoPlayer from "./VideoPlayer";
 import "./videoPlayerPage.css";
 import axios from "axios";
@@ -26,9 +26,9 @@ export default function VideoPlayerPage() {
 
   const [friendList, setFriendList] = React.useState([]);
 
-  const handleFriends = () => {
+  useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("https://jsonplaceholder.typicode.com/posts%22")
       .then((response) => {
         console.log(response);
         setFriendList(response.data);
@@ -36,10 +36,23 @@ export default function VideoPlayerPage() {
       .catch((error) => {
         console.log(error);
       });
-  };
+  });
+
+  // const handleFriends = () => {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/posts")
+  //     .then((response) => {
+  //       console.log(response);
+  //       setFriendList(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    // handleFriends();
   };
 
   return (
@@ -59,19 +72,52 @@ export default function VideoPlayerPage() {
                     value={value}
                     indicatorColor="primary"
                     textColor="primary"
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
+                    variant="fullWidth"
                   >
                     <Tab label="Friends" icon={<People />}>
-                      <div className="friends"></div>
+                      <div className="friends">
+                        List Of Friends
+                        {friendList.map((data) => {
+                          return (
+                            <li
+                              key={data.key}
+                              style={{
+                                listStyleType: "none",
+                                paddingLeft: "5px",
+                              }}
+                            >
+                              <p>{data.id}</p>
+                            </li>
+                          );
+                        })}
+                      </div>
                     </Tab>
                     <Tab label="Movie Info" icon={<Movie />}>
                       <div className="movieReview"></div>
                     </Tab>
-                    <Tab label="Messages(Coming Soon)" icon={<Message />}>
-                      <div className="messages"></div>
-                    </Tab>
                   </Tabs>
                 </Paper>
+                <TabPanel value={value} index={0}>
+                  <div className="friendsList">
+                    {friendList.map((data) => {
+                      return (
+                        <li
+                          key={data.key}
+                          style={{
+                            listStyleType: "none",
+                            paddingLeft: "5px",
+                          }}
+                        >
+                          <p>{data.id}</p>
+                        </li>
+                      );
+                    })}
+                  </div>
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  Tab2
+                </TabPanel>
               </div>
             </div>
           </CardContent>
@@ -79,4 +125,9 @@ export default function VideoPlayerPage() {
       </div>
     </div>
   );
+}
+
+function TabPanel(props) {
+  const { children, value, index } = props;
+  return <div>{value === index && <p>{children}</p>}</div>;
 }
