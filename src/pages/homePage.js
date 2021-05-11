@@ -5,12 +5,9 @@ import "./homePage.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div id="homePage">
         <div className="header">
-          <div className="row">
-            <div className="col">1</div>
-            <div className="col">2</div>
-          </div>
+          <div className="row"></div>
         </div>
       </div>
     );

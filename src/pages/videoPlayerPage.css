@@ -1,0 +1,14 @@
+.cardPlayer {
+  padding-top: 50px;
+  margin: 50px;
+}
+
+.player {
+  height: 200px;
+  width: 50vw;
+}
+
+#usersLobbyCards {
+  height: 60px;
+  display: flex;
+}
