@@ -13,7 +13,7 @@ import HomePage from "./components/homePage";
 import SampleImg from "./assets/avatar.png";
 import SampleImg2 from "./assets/avatar2.jpg";
 import SampleImg3 from "./assets/avatar3.jpg";
-import homeflixlogo from "./assets/homeflix_logo.svg";
+import homeflixlogo from "./assets/logo1.png";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       <div className="App">
         
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <img class="navlogo1" src={homeflixlogo} style={{height:"30px", width:"30px" , marginLeft:"25px"}}  /> 
+        <img class="navlogo1" src={homeflixlogo} style={{height:"80px", width:"80px" , marginLeft:"25px"}}  /> 
 
           <div className="container">
             <Link className="navbar-brand" to={"/auth/sign-in"}>
