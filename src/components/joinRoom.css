@@ -1,0 +1,16 @@
+
+.svg1{
+    display: flex;
+    justify-content: center;
+    height: 25vh;
+    width: 17vw;
+    
+    overflow-y: hidden;
+    margin: 20px;
+    margin-left: 10px;
+}
+
+#goBtn{
+    border-radius: 30px;
+    
+}
