@@ -11,4 +11,5 @@
 #usersLobbyCards {
   height: 60px;
   display: flex;
+  margin: 10px;
 }
