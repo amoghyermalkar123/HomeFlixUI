@@ -2,7 +2,7 @@ import React from "react";
 import ReactHlsPlayer from 'react-hls-player';
 
 function VideoPlayer() {
-    const source = 'http://localhost:3000/media/1/stream/';
+    const source = 'http://localhost:4000/media/1/stream/';
 
     return (
         <div>
