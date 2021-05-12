@@ -1,11 +1,10 @@
-import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import React from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
-import VideoPlayer from "./pages/VideoPlayer";
 
 import SampleImg from "./assets/avatar.png";
 import SampleImg2 from "./assets/avatar2.jpg";
@@ -139,8 +138,11 @@ function App() {
                 </div>
 
             </div>
-        </Router>
-    );
+          </Route>
+        </div>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
