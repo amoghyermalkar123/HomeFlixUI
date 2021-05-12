@@ -28,7 +28,7 @@ export default function VideoPlayerPage() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts%22")
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
         console.log(response);
         setFriendList(response.data);

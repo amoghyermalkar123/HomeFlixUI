@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
+import history from "../history";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ export default class Login extends Component {
     var submitLoginDetails = (e) => {
       e.preventDefault();
       axios
-        .post("http://9c124e5ce7d7.ngrok.io/login/", {
+        .post("http://c5cb9ec61ae5.ngrok.io/login/", {
           email: this.state.email,
           password: this.state.password,
         })
@@ -42,19 +44,19 @@ export default class Login extends Component {
     return (
       <form>
         <h3>Log in</h3>
-
         <div className="form-group">
-          <label>Email</label>
+          <label>Email</label> <br />
           <input
             type="email"
             className="form-control"
             placeholder="Enter email"
             onChange={(e) => handleEmail(e)}
           />
-        </div>
-
+        </div>{" "}
+        <br />
         <div className="form-group">
           <label>Password</label>
+          <br />
           <input
             type="password"
             className="form-control"
@@ -62,20 +64,7 @@ export default class Login extends Component {
             onChange={(e) => handlePassword(e)}
           />
         </div>
-
-        <div className="form-group">
-          <div className="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
-            />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
-          </div>
-        </div>
-
+        <br />
         <button
           type="submit"
           className="btn btn-dark btn-lg btn-block"
