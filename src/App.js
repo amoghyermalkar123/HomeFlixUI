@@ -10,6 +10,7 @@ import VideoPlayer from "./pages/VideoPlayer";
 import SampleImg from "./assets/avatar.png";
 import SampleImg2 from "./assets/avatar2.jpg";
 import SampleImg3 from "./assets/avatar3.jpg";
+import Sample from './pages/Sample';
 
 function App() {
     return (
@@ -132,6 +133,9 @@ function App() {
                         </div>
                     </Route>
 
+                    <Route path="/createRoom">
+                                        <Sample/>
+                    </Route>
                 </div>
 
             </div>
