@@ -26,7 +26,7 @@ export default class Login extends Component {
     var submitLoginDetails = (e) => {
       e.preventDefault();
       axios
-        .post("http://03f4832eef56.ngrok.io/login/", {
+        .post("http://localhost:4000/login/", {
           email: this.state.email,
           password: this.state.password,
         })

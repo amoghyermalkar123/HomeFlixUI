@@ -14,6 +14,7 @@ import SignUp from "./components/SignUp";
 
 import CreateRoom from "./pages/createRoom";
 import videoPlayerPage from "./pages/videoPlayerPage";
+import Ws from "./components/notif";
 
 import axios from "axios";
 
@@ -128,7 +129,7 @@ function App() {
         </Dialog>
 
         <div className="outer">
-          <Redirect from="/" to="/auth/sign-in" />
+          {/* <Redirect from="/" to={"/auth/sign-in"} /> */}
           <Route path="/createRoom" component={CreateRoom} />
           <Route path="/live/play/" component={videoPlayerPage} />
           <Route path="/auth">
@@ -139,6 +140,9 @@ function App() {
               </Switch>
             </div>
           </Route>
+          <Route path="/com">
+                        <Ws/>
+                    </Route>
         </div>
       </div>
     </Router>
