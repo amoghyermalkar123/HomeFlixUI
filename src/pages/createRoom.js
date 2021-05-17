@@ -19,11 +19,12 @@ export default class CreateRoom extends Component {
             users: []
         };
     }
-    ws = new WebSocket('ws://localhost:8070/echo')
+    // ws = new WebSocket('ws://localhost:8070/echo')
+    ws = new WebSocket('ws://53ffeb26e159.ngrok.io/echo')
     emailId = localStorage.getItem("email")
 
     componentDidMount() {
-        axios.post("http://localhost:4000/getUserFriends/", {id: localStorage.getItem("id")}).then((response) => {
+        axios.post("http://f2ab1b72d4ce.ngrok.io/getUserFriends/", {id: localStorage.getItem("id")}).then((response) => {
             console.log("something");
             this.setState({users: response.data.friends});
             console.log(this.state.users);
@@ -63,9 +64,9 @@ export default class CreateRoom extends Component {
         };
 
         const onSubmitClicked = () => {
-            axios.post("http://localhost:4000/create_live_room/", {
+            axios.post("http://f2ab1b72d4ce.ngrok.io/create_live_room/", {
                 id: this.id,
-                friends: ["ayermalkar99@gmail.com"],
+                friends: ["ishan@gmail.com"], // this.state.friendsSelected
                 video: "1212",
                 room: "69"
             }).then((res) => {
