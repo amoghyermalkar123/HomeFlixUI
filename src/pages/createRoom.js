@@ -19,25 +19,52 @@ export default class CreateRoom extends Component {
             users: []
         };
     }
+    ws = new WebSocket('ws://localhost:8070/echo')
+    emailId = localStorage.getItem("email")
 
     componentDidMount() {
-        axios.post("http://03f4832eef56.ngrok.io/getUserFriends/", {id: localStorage.getItem("id")}).then((response) => {
+        axios.post("http://localhost:4000/getUserFriends/", {id: localStorage.getItem("id")}).then((response) => {
             console.log("something");
             this.setState({users: response.data.friends});
             console.log(this.state.users);
         }).catch((error) => {
             console.log(error);
         });
+
+        this.ws.onopen = () => { // on connecting, do nothing but log it to the console
+            console.log('connected')
+            // this.ws.send('ayermalkar99@gmail.com')
+            // connect to socket server with your email
+            this.ws.send(this.emailId)
+        }
+
+        this.ws.onmessage = evt => { // listen to data sent from the websocket server
+            const message = JSON.parse(evt.data)
+            cogoToast.success (
+                <div>
+                    <b>Room Invitation</b>
+                    <p>you have been invited by your friend to a live stream!!</p>
+                </div>
+            );
+            console.log(message)
+        }
+
+        this.ws.onclose = () => {
+            console.log('disconnected')
+            // automatically try to reconnect on connection loss
+        }
     }
 
     render() {
+        console.log("createRoom.id:", this.emailId)
+
         const handleSelection = (e) => {
             this.state.friendsSelected.push(e.target.value);
         };
 
         const onSubmitClicked = () => {
             axios.post("http://localhost:4000/create_live_room/", {
-                id: "keyurChaID",
+                id: this.id,
                 friends: ["ayermalkar99@gmail.com"],
                 video: "1212",
                 room: "69"
@@ -45,7 +72,7 @@ export default class CreateRoom extends Component {
                 cogoToast.success (
                     <div>
                         <b>Room Creation Successfull</b>
-                        <p>your friends have been successfully invited</p>
+                        <p>your friends have been successfully invited to your room!!</p>
                     </div>
                 );
                 console.log(res)
