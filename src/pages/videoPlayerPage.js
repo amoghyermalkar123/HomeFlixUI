@@ -3,13 +3,8 @@ import VideoPlayer from "./VideoPlayer";
 import "./videoPlayerPage.css";
 import axios from "axios";
 
-import SampleImg from "../assets/avatar.png";
-import SampleImg2 from "../assets/avatar2.jpg";
-import SampleImg3 from "../assets/avatar3.jpg";
-
 import People from "@material-ui/icons/People";
 import Movie from "@material-ui/icons/Movie";
-import Message from "@material-ui/icons/Message";
 
 import {
   Card,
@@ -26,17 +21,17 @@ export default function VideoPlayerPage() {
 
   const [friendList, setFriendList] = React.useState([]);
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        console.log(response);
-        setFriendList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+  // useEffect(() => {
+  //   axios
+  //     .get("")
+  //     .then((response) => {
+  //       console.log(response);
+  //       setFriendList(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // });
 
   // const handleFriends = () => {
   //   axios

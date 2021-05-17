@@ -31,7 +31,7 @@ export default class SignUp extends Component {
     var submitRegistrationDetails = (e) => {
       e.preventDefault();
       axios
-        .post("http://c5cb9ec61ae5.ngrok.io/registration/", {
+        .post("http://03f4832eef56.ngrok.io/registration/", {
           name: this.state.name,
           email: this.state.email,
           password: this.state.password,
@@ -39,7 +39,10 @@ export default class SignUp extends Component {
         .then(
           (response) => {
             console.log(response);
-            history.replace("/live/play/");
+            localStorage.setItem("id", response.data.id);
+            if (response.status == 200) {
+              history.replace("/live/play/");
+            }
           },
           (error) => {
             console.log(error);

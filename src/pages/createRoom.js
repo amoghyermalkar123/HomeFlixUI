@@ -3,7 +3,7 @@ import "./createRoom.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
-import { IconButton } from "@material-ui/core";
+import { IconButton, Paper } from "@material-ui/core";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 
 import FriendsPhoto from "../assets/Friends.png";
@@ -15,15 +15,19 @@ export default class CreateRoom extends Component {
     this.state = {
       posts: [],
       friendsSelected: [],
+      users: [],
     };
   }
 
   componentDidMount() {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .post("http://03f4832eef56.ngrok.io/getUserFriends/", {
+        id: localStorage.getItem("id"),
+      })
       .then((response) => {
-        console.log(response);
-        this.setState({ posts: response.data });
+        console.log("something");
+        this.setState({ users: response.data.friends });
+        console.log(this.state.users);
       })
       .catch((error) => {
         console.log(error);
@@ -31,10 +35,6 @@ export default class CreateRoom extends Component {
   }
 
   render() {
-    const handleDelete = () => {
-      console.info("You clicked the delete icon.");
-    };
-
     const handleSelection = (e) => {
       this.state.friendsSelected.push(e.target.value);
     };
@@ -73,8 +73,8 @@ export default class CreateRoom extends Component {
                         <br />
                         <div className="friends">
                           <div className="test">
-                            List Of Friends
-                            {this.state.posts.map((data) => {
+                            Invite Friends
+                            {this.state.users.map((data) => {
                               return (
                                 <li
                                   key={data.key}
@@ -87,11 +87,11 @@ export default class CreateRoom extends Component {
                                     <input
                                       className="form-check-input"
                                       type="checkbox"
-                                      value={data.title}
+                                      value={data}
                                       id="flexCheckDefault"
                                       onChange={(e) => handleSelection(e)}
                                     />
-                                    <p>{data.title}</p>
+                                    <p>{JSON.parse(data)}</p>
                                   </div>
                                 </li>
                               );

@@ -26,14 +26,18 @@ export default class Login extends Component {
     var submitLoginDetails = (e) => {
       e.preventDefault();
       axios
-        .post("http://c5cb9ec61ae5.ngrok.io/login/", {
+        .post("http://03f4832eef56.ngrok.io/login/", {
           email: this.state.email,
           password: this.state.password,
         })
         .then(
           (response) => {
             console.log(response);
-            history.replace("/live/play/");
+            localStorage.setItem("id", response.data.id);
+            console.log(localStorage.getItem("id"));
+            if (response.status == 200) {
+              history.replace("/live/play/");
+            }
           },
           (error) => {
             console.log(error);
