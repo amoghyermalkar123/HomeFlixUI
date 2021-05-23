@@ -5,6 +5,9 @@ import cogoToast from 'cogo-toast';
 
 import history from "../history";
 
+var local = "http://localhost:4000/login/"
+var ngrok = "http://daecea95f19e.ngrok.io/login/"
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +29,7 @@ export default class Login extends Component {
 
         var submitLoginDetails = (e) => {
             e.preventDefault();
-            axios.post("http://f2ab1b72d4ce.ngrok.io/login/", {
+            axios.post(ngrok, {
                 email: this.state.email,
                 password: this.state.password
             }).then((response) => {

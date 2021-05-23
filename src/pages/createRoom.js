@@ -8,6 +8,13 @@ import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import cogoToast from 'cogo-toast';
 
 import FriendsPhoto from "../assets/Friends.png";
+import history from "../history";
+
+var local1 = "http://localhost:4000/getUserFriends/"
+var ngrok1 = "http://daecea95f19e.ngrok.io/getUserFriends/"
+
+var local2 = "ws://localhost:8070/echo"
+var ngrok2 = "ws://fad7eb2fdc64.ngrok.io/echo"
 
 export default class CreateRoom extends Component {
     constructor(props) {
@@ -20,11 +27,11 @@ export default class CreateRoom extends Component {
         };
     }
     // ws = new WebSocket('ws://localhost:8070/echo')
-    ws = new WebSocket('ws://53ffeb26e159.ngrok.io/echo')
+    ws = new WebSocket(ngrok2)
     emailId = localStorage.getItem("email")
 
     componentDidMount() {
-        axios.post("http://f2ab1b72d4ce.ngrok.io/getUserFriends/", {id: localStorage.getItem("id")}).then((response) => {
+        axios.post(ngrok1, {id: localStorage.getItem("id")}).then((response) => {
             console.log("something");
             this.setState({users: response.data.friends});
             console.log(this.state.users);
@@ -64,9 +71,11 @@ export default class CreateRoom extends Component {
         };
 
         const onSubmitClicked = () => {
-            axios.post("http://f2ab1b72d4ce.ngrok.io/create_live_room/", {
+            axios.post("http://localhost:4000/create_live_room/", {
                 id: this.id,
-                friends: ["ishan@gmail.com"], // this.state.friendsSelected
+                friends: [
+                    "samarth@gmail.com", "ishan@gmail.com",
+                ], // this.state.friendsSelected
                 video: "1212",
                 room: "69"
             }).then((res) => {
@@ -76,6 +85,7 @@ export default class CreateRoom extends Component {
                         <p>your friends have been successfully invited to your room!!</p>
                     </div>
                 );
+                history.replace("/lobby")
                 console.log(res)
             }).catch((err) => {
                 console.log(err)
