@@ -1,0 +1,35 @@
+.container1 {
+  margin-top: 60px;
+  padding: 50px;
+}
+.card {
+  height: 600px;
+  width: 100%;
+  border-radius: 30px;
+}
+
+.contents {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.friends {
+  display: flex;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.test {
+  overflow-y: scroll;
+  height: 50vh;
+  min-width: 25vw;
+}
+
+.buttonGroups {
+  padding: 10px;
+}

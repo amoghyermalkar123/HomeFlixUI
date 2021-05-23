@@ -1,0 +1,31 @@
+.cardPlayer {
+  padding-top: 50px;
+  margin: 50px;
+}
+
+.player {
+  border-radius: 50px;
+  height: 80px;
+  width: 50vw;
+}
+
+#usersLobbyCards {
+  height: 60px;
+  display: flex;
+  margin: 10px;
+}
+
+.friendsList {
+  height: 65vh;
+  overflow-y: scroll;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.effect1 {
+}
