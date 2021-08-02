@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  /* overflow: hidden; */
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .App-logo {

@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+
+.heading01 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 770px;
+  padding-top: 100px;
+}
+
+.MainDiv {
+  max-height: 100vh;
+  position: relative;
+}
+
+.header1 {
+  position: fixed;
+  margin-top: -350px;
+}
